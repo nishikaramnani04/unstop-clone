@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Unstop - Unlock Your Career</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  :root{
+    --blue: #1664c9;
+    --blue-dark: #0f4fa8;
+    --blue-bg: #eef3fc;
+    --card-bg: #eef2fb;
+    --text-dark: #1a1a2e;
+    --text-grey: #5b5b6b;
+    --green: #1aa260;
+    --border: #e2e6ef;
+    --purple: #6a3fd4;
+  }
+
+  *{ box-sizing: border-box; margin:0; padding:0; }
+
+  body{
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text-dark);
+    background:#fff;
+  }
+
+  a{ text-decoration:none; color:inherit; }
+
+  .container{
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ---------- HEADER ---------- */
+  header{
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top:0;
+    background:#fff;
+    z-index: 100;
+  }
+
+  .header-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding: 14px 32px;
+    max-width: 1240px;
+    margin:0 auto;
+  }
+
+  .logo-group{
+    display:flex;
+    align-items:center;
+    gap:28px;
+  }
+
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size: 26px;
+    font-weight:800;
+  }
+  .logo .un{ color: var(--text-dark); }
+  .logo .stop-pill{
+    background: var(--blue);
+    color:#fff;
+    border-radius: 20px;
+    padding: 2px 14px;
+  }
+
+  nav.main-nav{
+    display:flex;
+    gap: 28px;
+  }
+  nav.main-nav a{
+    font-size: 15px;
+    font-weight:500;
+    color: var(--text-dark);
+    display:flex;
+    align-items:center;
+    gap:4px;
+    padding: 8px 0;
+  }
+  nav.main-nav a:hover{ color: var(--blue); }
+  nav.main-nav a .chevron{
+    font-size: 10px;
+    margin-top:2px;
+  }
+
+  .header-actions{
+    display:flex;
+    align-items:center;
+    gap: 18px;
+  }
+
+  .search-icon{
+    width:38px; height:38px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:1px solid var(--border);
+    cursor:pointer;
+  }
+
+  .btn-login{
+    background: var(--blue);
+    color:#fff;
+    border:none;
+    border-radius: 24px;
+    padding: 10px 28px;
+    font-size: 15px;
+    font-weight:600;
+    cursor:pointer;
+  }
+  .btn-login:hover{ background: var(--blue-dark); }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding: 56px 32px 40px;
+    max-width: 1240px;
+    margin: 0 auto;
+    text-align:center;
+  }
+
+  .hero h1{
+    font-size: 44px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+  }
+  .hero h1 .accent{ color: var(--blue); }
+
+  .quick-links{
+    display:grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 18px;
+    margin-top: 44px;
+  }
+
+  .quick-link{
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 22px 12px 18px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap: 14px;
+    cursor:pointer;
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .quick-link:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(22,100,201,0.12);
+  }
+  .quick-link .icon{
+    font-size: 30px;
+  }
+  .quick-link span{
+    font-size: 14.5px;
+    font-weight:600;
+    color: var(--text-dark);
+  }
+
+  /* ---------- SECTION HEADER ---------- */
+  .section{
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 48px 32px 8px;
+  }
+
+  .section-title{
+    display:flex;
+    align-items:center;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .section-title .bar{
+    width:5px;
+    height: 24px;
+    background: var(--blue);
+    border-radius: 3px;
+  }
+  .section-title h2{
+    font-size: 24px;
+    font-weight:700;
+  }
+
+  .tab-row{
+    display:flex;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .tab{
+    border: 1.5px solid var(--border);
+    border-radius: 24px;
+    padding: 9px 24px;
+    font-size: 14.5px;
+    font-weight:600;
+    color: var(--text-grey);
+    cursor:pointer;
+  }
+  .tab.active{
+    border-color: var(--blue);
+    color: var(--blue);
+    background: var(--blue-bg);
+  }
+
+  /* ---------- CARD GRID / CAROUSEL ---------- */
+  .carousel-wrap{
+    position:relative;
+  }
+
+  .card-grid{
+    display:flex;
+    gap: 22px;
+    overflow-x:auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding-bottom: 8px;
+    cursor: grab;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .card-grid:active{ cursor: grabbing; }
+  .card-grid::-webkit-scrollbar{ display:none; }
+
+  .card-grid .card,
+  .card-grid .feature-card{
+    flex: 0 0 270px;
+    scroll-snap-align: start;
+  }
+
+  .scroll-btn{
+    position:absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background:#fff;
+    border:1px solid var(--border);
+    box-shadow: 0 4px 14px rgba(20,30,60,0.15);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size: 16px;
+    font-weight:700;
+    color: var(--text-dark);
+    cursor:pointer;
+    z-index: 10;
+    user-select:none;
+    transition: background .15s ease, color .15s ease;
+  }
+  .scroll-btn:hover{ background: var(--blue); color:#fff; }
+  .scroll-btn.left{ left: -20px; }
+  .scroll-btn.right{ right: -20px; }
+
+  .card{
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    cursor:pointer;
+    transition: box-shadow .15s ease, transform .15s ease;
+    background:#fff;
+  }
+  .card:hover{
+    box-shadow: 0 10px 24px rgba(20,30,60,0.08);
+    transform: translateY(-3px);
+  }
+
+  .card-top{
+    background: var(--card-bg);
+    padding: 18px;
+    position:relative;
+    min-height: 110px;
+  }
+
+  .card-meta{
+    font-size: 13.5px;
+    font-weight:600;
+    color: var(--green);
+    display:flex;
+    align-items:center;
+    gap:5px;
+    margin-bottom: 8px;
+  }
+  .card-meta.location{
+    color: var(--text-grey);
+    font-weight:500;
+  }
+  .card-meta.online{
+    color: var(--text-grey);
+    font-weight:500;
+  }
+
+  .company-logo{
+    position:absolute;
+    top: 16px;
+    right: 16px;
+    width: 56px;
+    height: 56px;
+    border-radius: 10px;
+    background:#fff;
+    border:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:800;
+    font-size: 13px;
+    overflow:hidden;
+  }
+
+  .card-body{
+    padding: 16px 18px 20px;
+  }
+  .card-body h3{
+    font-size: 16px;
+    font-weight:700;
+    margin-bottom: 6px;
+    line-height:1.3;
+  }
+  .card-body p{
+    font-size: 13.5px;
+    color: var(--text-grey);
+  }
+
+  .card-body .start-btn{
+    margin-top: 14px;
+    width:100%;
+    border: 1.5px solid var(--border);
+    border-radius: 24px;
+    padding: 9px;
+    font-size: 14px;
+    font-weight:600;
+    text-align:center;
+    background:#fff;
+    color: var(--text-dark);
+  }
+  .card-body .start-btn:hover{
+    border-color: var(--blue);
+    color: var(--blue);
+  }
+
+  .view-all{
+    margin-top: 26px;
+    background: var(--blue-bg);
+    border-radius: 14px;
+    padding: 16px;
+    text-align:center;
+    font-weight:700;
+    color: var(--blue);
+    font-size: 15px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+  }
+  .view-all:hover{ background: #dde9fb; }
+  .view-all .arrow-circle{
+    width:22px; height:22px;
+    border-radius:50%;
+    background: var(--blue);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:12px;
+  }
+
+  /* ---------- FEATURED BANNERS ---------- */
+  .featured-grid{
+    display:flex;
+    gap: 22px;
+    overflow-x:auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding-bottom: 8px;
+    cursor: grab;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .featured-grid:active{ cursor: grabbing; }
+  .featured-grid::-webkit-scrollbar{ display:none; }
+  .feature-card{
+    flex: 0 0 320px;
+    scroll-snap-align: start;
+    border-radius: 16px;
+    overflow:hidden;
+    border:1px solid var(--border);
+    cursor:pointer;
+  }
+  .feature-card .banner{
+    height: 190px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    font-weight:800;
+    text-align:center;
+    padding: 20px;
+    position:relative;
+  }
+  .feature-card.b1 .banner{ background: linear-gradient(135deg,#fdf6e3,#f3e9c9); color:#2b2b2b; }
+  .feature-card.b2 .banner{ background: linear-gradient(135deg,#1664c9,#0a2f63); }
+  .feature-card.b3 .banner{ background: linear-gradient(135deg,#19c2c2,#0e7a8c); }
+  .feature-card.b4 .banner{ background: linear-gradient(135deg,#ff8a65,#d84315); }
+  .feature-card.b5 .banner{ background: linear-gradient(135deg,#7b3fe4,#4d1fb0); }
+  .feature-card.b6 .banner{ background: linear-gradient(135deg,#1aa260,#0c5c36); }
+
+  .feature-tags{
+    display:flex;
+    gap: 8px;
+    padding: 14px 16px 0;
+  }
+  .feature-tags span{
+    font-size: 12px;
+    font-weight:600;
+    border:1px solid var(--border);
+    border-radius: 14px;
+    padding: 4px 12px;
+    color: var(--text-grey);
+  }
+  .feature-card h4{
+    padding: 10px 16px 18px;
+    font-size: 15.5px;
+    font-weight:700;
+  }
+
+  /* ---------- AI PROMO BANNER ---------- */
+  .ai-banner{
+    margin: 48px 0;
+    background: linear-gradient(120deg,#7b3fe4,#4d1fb0);
+    border-radius: 18px;
+    padding: 28px 40px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    color:#fff;
+    max-width: 1240px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .ai-banner .ai-left h3{
+    font-size: 24px;
+    font-weight:800;
+    margin-bottom: 10px;
+  }
+  .ai-banner .ai-left h3 .hl{ color:#ffd35c; }
+  .ai-banner .pills{
+    display:flex;
+    gap:10px;
+  }
+  .ai-banner .pills span{
+    background: rgba(255,255,255,0.15);
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight:600;
+  }
+  .ai-banner .go-pro{
+    margin-top: 16px;
+    display:inline-block;
+    background: #ffd35c;
+    color: #3a2400;
+    font-weight:700;
+    border-radius: 20px;
+    padding: 9px 22px;
+    font-size: 14px;
+  }
+
+  /* ---------- PRACTICE TILES ---------- */
+  .practice-grid{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .practice-card{
+    border-radius: 18px;
+    padding: 24px;
+    display:flex;
+    align-items:center;
+    gap: 20px;
+    cursor:pointer;
+  }
+  .practice-card.blue{ background: linear-gradient(135deg,#e7f0fd,#cfe1fb); }
+  .practice-card.gold{ background: linear-gradient(135deg,#fff3d6,#ffe9b3); }
+  .practice-card .pc-icon{
+    width: 80px;
+    height:80px;
+    border-radius: 14px;
+    background:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size: 32px;
+    flex-shrink:0;
+  }
+  .practice-card .pc-text .label{
+    font-size: 13px;
+    font-weight:700;
+    color: var(--blue);
+    letter-spacing: 0.5px;
+  }
+  .practice-card.gold .pc-text .label{ color:#a3760a; }
+  .practice-card .pc-text h4{
+    font-size: 19px;
+    font-weight:800;
+    margin: 4px 0 6px;
+  }
+  .practice-card .pc-text p{
+    font-size: 13.5px;
+    color: var(--text-grey);
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    margin-top: 64px;
+    background: #f7f9fc;
+    border-top: 1px solid var(--border);
+    padding: 48px 32px 24px;
+  }
+  .footer-inner{
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+  .footer-cols{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    margin-bottom: 36px;
+  }
+  .footer-col h5{
+    font-size: 13px;
+    font-weight:700;
+    color: var(--text-dark);
+    text-transform:uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 16px;
+  }
+  .footer-col a{
+    display:block;
+    font-size: 14px;
+    color: var(--text-grey);
+    margin-bottom: 12px;
+  }
+  .footer-col a:hover{ color: var(--blue); }
+
+  .footer-bottom{
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+    font-size: 13px;
+    color: var(--text-grey);
+    display:flex;
+    justify-content:space-between;
+  }
+
+  @media (max-width: 1024px){
+    .quick-links{ grid-template-columns: repeat(4,1fr); }
+    .card-grid{ grid-template-columns: repeat(2,1fr); }
+    .featured-grid{ grid-template-columns: repeat(2,1fr); }
+    .footer-cols{ grid-template-columns: repeat(2,1fr); }
+    nav.main-nav{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo-group">
+      <div class="logo"><span class="un">un</span><span class="stop-pill">stop</span></div>
+      <nav class="main-nav">
+        <a href="#">Internships <span class="chevron">▾</span></a>
+        <a href="#">Jobs <span class="chevron">▾</span></a>
+        <a href="#">Competitions <span class="chevron">▾</span></a>
+        <a href="#">Mock Tests <span class="chevron">▾</span></a>
+        <a href="#">Mentorships <span class="chevron">▾</span></a>
+        <a href="#">Courses</a>
+      </nav>
+    </div>
+    <div class="header-actions">
+      <div class="search-icon">🔍</div>
+      <button class="btn-login">Login</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <h1>Unlock Your <span class="accent">Career!</span> 🚀</h1>
+
+  <div class="quick-links">
+    <div class="quick-link"><div class="icon">📚</div><span>Internships</span></div>
+    <div class="quick-link"><div class="icon">💼</div><span>Jobs</span></div>
+    <div class="quick-link"><div class="icon">🏆</div><span>Competitions</span></div>
+    <div class="quick-link"><div class="icon">📝</div><span>Mock Tests</span></div>
+    <div class="quick-link"><div class="icon">🎤</div><span>Mock Interviews</span></div>
+    <div class="quick-link"><div class="icon">🤝</div><span>Mentorships</span></div>
+    <div class="quick-link"><div class="icon">🎓</div><span>Courses</span></div>
+    <div class="quick-link"><div class="icon">💻</div><span>100 Days to Code</span></div>
+  </div>
+</section>
+
+<!-- FEATURED -->
+<section class="section">
+  <div class="section-title"><div class="bar"></div><h2>Featured</h2></div>
+  <div class="carousel-wrap">
+    <div class="scroll-btn left" onclick="scrollCarousel('featured-track', -1)">‹</div>
+    <div class="featured-grid" id="featured-track">
+      <div class="feature-card b1">
+        <div class="banner">India's Biggest<br>Creators' League</div>
+        <div class="feature-tags"><span>Online</span><span>Free</span></div>
+        <h4>India's Biggest Creators' League</h4>
+      </div>
+      <div class="feature-card b2">
+        <div class="banner">Make your resume<br>cooler than the rest</div>
+        <div class="feature-tags"><span>Get your CV reviewed!</span></div>
+        <h4>Make your resume cooler than the rest</h4>
+      </div>
+      <div class="feature-card b3">
+        <div class="banner">Sales Trends 2026</div>
+        <div class="feature-tags"><span>Report</span></div>
+        <h4>Sales Trends Report 2026</h4>
+      </div>
+      <div class="feature-card b4">
+        <div class="banner">Campus Ambassador<br>Program 2026</div>
+        <div class="feature-tags"><span>Online</span><span>Free</span></div>
+        <h4>Campus Ambassador Program 2026</h4>
+      </div>
+      <div class="feature-card b5">
+        <div class="banner">Crack the Case<br>Study Challenge</div>
+        <div class="feature-tags"><span>Online</span></div>
+        <h4>Crack the Case Study Challenge</h4>
+      </div>
+      <div class="feature-card b6">
+        <div class="banner">Get Hired by<br>Top Startups</div>
+        <div class="feature-tags"><span>Jobs</span></div>
+        <h4>Get Hired by Top Startups</h4>
+      </div>
+    </div>
+    <div class="scroll-btn right" onclick="scrollCarousel('featured-track', 1)">›</div>
+  </div>
+</section>
+
+<!-- COMPETITIONS -->
+<section class="section">
+  <div class="section-title"><div class="bar"></div><h2>Competitions</h2></div>
+  <div class="carousel-wrap">
+    <div class="scroll-btn left" onclick="scrollCarousel('competitions-track', -1)">‹</div>
+    <div class="card-grid" id="competitions-track">
+      <div class="card">
+        <div class="card-top">
+          <div class="card-meta online">🌐 Online</div>
+          <div class="company-logo">IR</div>
+        </div>
+        <div class="card-body">
+          <h3>Build What Next India Runs On</h3>
+          <p>Pune University</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-top">
+          <div class="card-meta online">🌐 Online</div>
+          <div class="company-logo">BB</div>
+        </div>
+        <div class="card-body">
+          <h3>Battle of Brands</h3>
+          <p>Sant Longowal Institute</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-top">
+          <div class="card-meta online">🌐 Online</div>
+          <div class="company-logo">CQ</div>
+        </div>
+        <div class="card-body">
+          <h3>Campus Quiz Championship</h3>
+          <p>Unstop</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-top">
+          <div class="card-meta online">🌐 Online</div>
+          <div class="company-logo">HK</div>
+        </div>
+        <div class="card-body">
+          <h3>Hackverse 2026</h3>
+          <p>VIT Pune</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-top">
+          <div class="card-meta online">🌐 Online</div>
+          <div class="company-logo">DS</div>
+        </div>
+        <div class="card-body">
+          <h3>Design Sprint Challenge</h3>
+          <p>NID Ahmedabad</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-top">
+          <div class="card-meta online">🌐 Online</div>
+          <div class="company-logo">BZ</div>
+        </div>
+        <div class="card-body">
+          <h3>Biz Whiz Case Competition</h3>
+          <p>IIM Bangalore</p>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-btn right" onclick="scrollCarousel('competitions-track', 1)">›</div>
+  </div>
+  <div class="view-all">View All <div class="arrow-circle">→</div></div>
+</section>
+
+<!-- INTERNSHIPS -->
+<section class="section">
+  <div class="section-title"><div class="bar"></div><h2>Internships</h2></div>
+  <div class="carousel-wrap">
+    <div class="scroll-btn left" onclick="scrollCarousel('internships-track', -1)">‹</div>
+    <div class="card-grid" id="internships-track">
+      <div class="card">
+        <div class="card-top">
+          <div class="card-meta">💸 40 K/Month</div>
+          <div class="card-meta location">📍 In Office | Jaipur</div>
+          <div class="company-logo">Hero</div>
+        </div>
+        <div class="card-body">
+          <h3>Hero MotoCorp's Executive Program</h3>
+          <p>Hero MotoCorp Limited</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-top">
+          <div class="card-meta">💸 Stipend</div>
+          <div class="card-meta location">📍 Work From Home</div>
+          <div class="company-logo">D4</div>
+        </div>
+        <div class="card-body">
+          <h3>Campus Ambassador</h3>
+          <p>Desire4travels</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-top">
+          <div class="card-meta">💸 6 L - 11 LPA</div>
+          <div class="card-meta location">📍 In Office | Delhi</div>
+          <div class="company-logo">Hero</div>
+        </div>
+        <div class="card-body">
+          <h3>Territory Sales Manager</h3>
+          <p>Hero MotoCorp</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-top">
+          <div class="card-meta">💸 2.4 LPA</div>
+          <div class="card-meta location">📍 In Office</div>
+          <div class="company-logo">TM</div>
+        </div>
+        <div class="card-body">
+          <h3>Content Writer</h3>
+          <p>The Marketing Co.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-top">
+          <div class="card-meta">💸 25 K/Month</div>
+          <div class="card-meta location">📍 Work From Home</div>
+          <div class="company-logo">ZP</div>
+        </div>
+        <div class="card-body">
+          <h3>Social Media Marketing Intern</h3>
+          <p>Zepto</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-top">
+          <div class="card-meta">💸 5 - 8 LPA</div>
+          <div class="card-meta location">📍 In Office | Bengaluru</div>
+          <div class="company-logo">SW</div>
+        </div>
+        <div class="card-body">
+          <h3>Software Development Intern</h3>
+          <p>Swiggy</p>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-btn right" onclick="scrollCarousel('internships-track', 1)">›</div>
+  </div>
+  <div class="view-all">View All <div class="arrow-circle">→</div></div>
+</section>
+
+<!-- COMPANY MOCK TESTS -->
+<section class="section">
+  <div class="section-title"><div class="bar"></div><h2>Company Mock Tests</h2></div>
+  <div class="tab-row">
+    <div class="tab active">Tech</div>
+    <div class="tab">Management</div>
+    <div class="tab">General</div>
+  </div>
+  <div class="carousel-wrap">
+    <div class="scroll-btn left" onclick="scrollCarousel('mocktests-track', -1)">‹</div>
+    <div class="card-grid" id="mocktests-track">
+      <div class="card">
+        <div class="card-top">
+          <div class="company-logo">TCS</div>
+        </div>
+        <div class="card-body">
+          <h3>Software Engineer</h3>
+          <p>TCS</p>
+          <div class="start-btn">Start Test</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-top">
+          <div class="company-logo">NV</div>
+        </div>
+        <div class="card-body">
+          <h3>Embedded Systems Engineer</h3>
+          <p>NVIDIA</p>
+          <div class="start-btn">Start Test</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-top">
+          <div class="company-logo">DT</div>
+        </div>
+        <div class="card-body">
+          <h3>Data Analyst</h3>
+          <p>Deloitte</p>
+          <div class="start-btn">Start Test</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-top">
+          <div class="company-logo">IF</div>
+        </div>
+        <div class="card-body">
+          <h3>Business Analyst</h3>
+          <p>Infosys</p>
+          <div class="start-btn">Start Test</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-top">
+          <div class="company-logo">WP</div>
+        </div>
+        <div class="card-body">
+          <h3>Associate Consultant</h3>
+          <p>Wipro</p>
+          <div class="start-btn">Start Test</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-top">
+          <div class="company-logo">AC</div>
+        </div>
+        <div class="card-body">
+          <h3>Technology Analyst</h3>
+          <p>Accenture</p>
+          <div class="start-btn">Start Test</div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-btn right" onclick="scrollCarousel('mocktests-track', 1)">›</div>
+  </div>
+  <div class="view-all">View All <div class="arrow-circle">→</div></div>
+</section>
+
+<!-- COMPANY MOCK INTERVIEW -->
+<section class="section">
+  <div class="section-title"><div class="bar"></div><h2>Company Mock Interview</h2></div>
+  <div class="carousel-wrap">
+    <div class="scroll-btn left" onclick="scrollCarousel('mockinterview-track', -1)">‹</div>
+    <div class="card-grid" id="mockinterview-track">
+      <div class="card">
+        <div class="card-top">
+          <div class="company-logo">TCS</div>
+        </div>
+        <div class="card-body">
+          <h3>Software Engineer</h3>
+          <p>TCS</p>
+          <div class="start-btn">Start Interview</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-top">
+          <div class="company-logo">DT</div>
+        </div>
+        <div class="card-body">
+          <h3>Data Analyst</h3>
+          <p>Deloitte</p>
+          <div class="start-btn">Start Interview</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-top">
+          <div class="company-logo">AM</div>
+        </div>
+        <div class="card-body">
+          <h3>Product Manager</h3>
+          <p>Amazon</p>
+          <div class="start-btn">Start Interview</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-top">
+          <div class="company-logo">GG</div>
+        </div>
+        <div class="card-body">
+          <h3>SDE - 1</h3>
+          <p>Google</p>
+          <div class="start-btn">Start Interview</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-top">
+          <div class="company-logo">MS</div>
+        </div>
+        <div class="card-body">
+          <h3>Cloud Solutions Engineer</h3>
+          <p>Microsoft</p>
+          <div class="start-btn">Start Interview</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-top">
+          <div class="company-logo">FB</div>
+        </div>
+        <div class="card-body">
+          <h3>Frontend Developer</h3>
+          <p>Meta</p>
+          <div class="start-btn">Start Interview</div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-btn right" onclick="scrollCarousel('mockinterview-track', 1)">›</div>
+  </div>
+  <div class="view-all">View All <div class="arrow-circle">→</div></div>
+</section>
+
+<!-- AI PROMO BANNER -->
+<section class="section">
+  <div class="ai-banner">
+    <div class="ai-left">
+      <h3>Upgrade Your Career <span class="hl">with AI</span> ✨</h3>
+      <div class="pills">
+        <span>AI-powered mock interviews</span>
+        <span>Mock tests</span>
+        <span>Career-ready courses</span>
+      </div>
+      <a href="#" class="go-pro">💎 Go Pro</a>
+    </div>
+  </div>
+</section>
+
+<!-- PRACTICE -->
+<section class="section">
+  <div class="practice-grid">
+    <div class="practice-card blue">
+      <div class="pc-icon">🧠</div>
+      <div class="pc-text">
+        <div class="label">100 DAYS</div>
+        <h4>Coding Sprint</h4>
+        <p>Level up your skills daily with our 100-Day Coding Sprint</p>
+      </div>
+    </div>
+    <div class="practice-card gold">
+      <div class="pc-icon">🖥️</div>
+      <div class="pc-text">
+        <div class="label">CODE</div>
+        <h4>Conquest</h4>
+        <p>Pick your topics, set your difficulty, and master key concepts</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h5>Company</h5>
+        <a href="#">Careers</a>
+        <a href="#">For Business</a>
+        <a href="#">Clientele</a>
+        <a href="#">Client Case Studies</a>
+        <a href="#">Partners</a>
+        <a href="#">Testimonials</a>
+      </div>
+      <div class="footer-col">
+        <h5>Jobs &amp; Internships</h5>
+        <a href="#">Jobs by Location</a>
+        <a href="#">Skill Based Jobs</a>
+        <a href="#">Internships by Location</a>
+        <a href="#">Skill Based Internships</a>
+      </div>
+      <div class="footer-col">
+        <h5>Resources</h5>
+        <a href="#">Work from Home Jobs</a>
+        <a href="#">Mentorship from Industry Experts</a>
+        <a href="#">Practice</a>
+        <a href="#">100 Days to Code</a>
+      </div>
+      <div class="footer-col">
+        <h5>Support</h5>
+        <a href="#">Help</a>
+        <a href="#">Legal</a>
+        <a href="#">Contact Us</a>
+        <a href="#">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Copyright © 2026 FLIVE Consulting Pvt Ltd - All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll buttons
+  function scrollCarousel(id, dir){
+    const track = document.getElementById(id);
+    const cardWidth = track.querySelector('.card, .feature-card').offsetWidth + 22; // gap included
+    track.scrollBy({ left: dir * cardWidth * 2, behavior: 'smooth' });
+  }
+
+  // Drag-to-scroll with mouse (desktop swipe feel)
+  document.querySelectorAll('.card-grid, .featured-grid').forEach(track => {
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    track.addEventListener('mousedown', (e) => {
+      isDown = true;
+      track.classList.add('dragging');
+      startX = e.pageX - track.offsetLeft;
+      scrollLeft = track.scrollLeft;
+    });
+    track.addEventListener('mouseleave', () => { isDown = false; });
+    track.addEventListener('mouseup', () => { isDown = false; });
+    track.addEventListener('mousemove', (e) => {
+      if(!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - track.offsetLeft;
+      const walk = (x - startX) * 1.2;
+      track.scrollLeft = scrollLeft - walk;
+    });
+  });
+</script>
+</body>
+</html>
